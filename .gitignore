@@ -1,0 +1,6 @@
+# Untracked files:
+*.exe
+*.ini
+*.dll
+bin/
+apps/

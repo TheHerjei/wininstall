@@ -1,0 +1,1 @@
+wmic.exe /Namespace:\\root\default Path SystemRestore Call CreateRestorePoint "Punto di ripristino Automatico", 100, 7

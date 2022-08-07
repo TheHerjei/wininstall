@@ -1,0 +1,22 @@
+<LayoutModificationTemplate
+	xmlns:defaultlayout="http://schemas.microsoft.com/Start/2014/FullDefaultLayout"
+	xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout"
+	xmlns:taskbar="http://schemas.microsoft.com/Start/2014/TaskbarLayout"
+	Version="1"
+	xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification">
+  <LayoutOptions StartTileGroupCellWidth="6" />
+  <DefaultLayoutOverride>
+    <StartLayoutCollection>
+      <defaultlayout:StartLayout GroupCellWidth="6" />
+    </StartLayoutCollection>
+  </DefaultLayoutOverride>
+  <CustomTaskbarLayoutCollection PinListPlacement="Replace">
+      <defaultlayout:TaskbarLayout>
+        <taskbar:TaskbarPinList>
+          <taskbar:DesktopApp DesktopApplicationLinkPath="C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" />
+		  <taskbar:DesktopApp DesktopApplicationLinkPath="%APPDATA%\Microsoft\Windows\Start Menu\Programs\System Tools\File Explorer.lnk" />
+		  <taskbar:UWA AppUserModeID="Microsoft.WindowsCalculator_8wekyb3d8bbwe!Calculator" />
+        </taskbar:TaskbarPinList>
+      </defaultlayout:TaskbarLayout>
+  </CustomTaskbarLayoutCollection>
+</LayoutModificationTemplate>
