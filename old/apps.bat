@@ -73,10 +73,10 @@ REM choco install squid -y
 choco install veeam-agent -y
 choco install simple-software-restriction-policy -y
 
-copy %fipath%softwarepolicy.ini C:\Windows\SoftwarePolicy\softwarepolicy.ini
+copy %fipath%\softwarepolicy.ini C:\Windows\SoftwarePolicy\softwarepolicy.ini
 	
 echo # Aggiungo Assistenza Remota su Desktop...
 mklink %PUBLIC%\Desktop\AIUTO C:\Windows\System32\quickassist.exe
 
 echo # Cambio assiociazioni predefinite...
-IF EXIST %fipath%WinFileAssoc.xml (Dism.exe /online /import-defaultappassociations:%fipath%WinFileAssoc.xml) ELSE (echo # Non è presente il file di associazione...)
+IF EXIST %fipath%\WinFileAssoc.xml (Dism.exe /online /import-defaultappassociations:%fipath%WinFileAssoc.xml) ELSE (echo # Non è presente il file di associazione...)

@@ -31,6 +31,16 @@ set TERMSRV=0
 
 REM #----------------------------------------------------#
 
+net session >nul 2>&1
+if %errorLevel% == 0 (
+    echo # Privilegi amministrativi OK!
+) else (
+	echo ### ERRORE ###
+    echo Avviare lo script come Amministratore
+    pause
+	exit
+)
+
 set BASEPATH=%~dp0
 
 if %INST% EQU 0 (
@@ -217,6 +227,11 @@ REG ADD "HKU\S-1-5-21-1616171246-3334492638-2239141655-1110\SOFTWARE\Microsoft\W
 REM Cambio nome al PC
 wmic computersystem where name="%COMPUTERNAME%" call rename name="%PCNAME%"
 
+REM Imposto scadenza illimitata delle password per tutti gli account locali
+net accounts /maxpwage:UNLIMITED
+
+REM Imposto bloc num all'avvio del pc
+reg add "HKU\.DEFAULT\Control Panel\Keyboard" /t REG_DWORD /v InitialKeyboardIndicators /d 2 /f
 
 REM # - Impostazioni MANUAL - #
 
@@ -226,6 +241,8 @@ if %INST% EQU "manual" (
     pause
 	call %BASEPATH%\scripts\manual_app.bat
 	call %BASEPATH%\scripts\manual_tweaks.bat
+
+    dism /online /Import-DefaultAppAssociations:"C:\config\AppAssociations.xml"
 )
 
 REM # - Impostazioni HOME - #
@@ -244,9 +261,6 @@ if %INST% EQU "home" (
     REM JWLibrary
     winget install -e -h 9WZDNCRFJ3B4 --source msstore
 
-    REM Associazioni files
-    .pdf=Acrobat.Document.DC
-
     REM Link di Aiuto sul desktop
     mklink %PUBLIC%\Desktop\AIUTO "C:\script\quickassist.bat"
 
@@ -261,6 +275,9 @@ if %INST% EQU "home" (
 	
 	REM Importo Start Layout
 	powershell Set-ExecutionPolicy Bypass -Scope Process -Force; %BASEPATH%\scripts\StartLayout.ps1
+
+    REM Associazioni files    
+    dism /online /Import-DefaultAppAssociations:"C:\config\AppAssociations.xml"
 )
 
 REM # - Impostazioni OFFICE - #
@@ -301,6 +318,9 @@ if %INST% EQU "office" (
 	
 	REM Importo Start Layout
 	powershell Set-ExecutionPolicy Bypass -Scope Process -Force; %BASEPATH%\scripts\StartLayout.ps1
+
+    REM Associazioni files    
+    dism /online /Import-DefaultAppAssociations:"C:\config\AppAssociations.xml"
 )
 
 REM # - Impostazioni EXTREME - #
@@ -381,6 +401,9 @@ if %INST% EQU "extreme" (
 	
 	REM Importo Start Layout
 	powershell Set-ExecutionPolicy Bypass -Scope Process -Force; %BASEPATH%\scripts\StartLayout.ps1
+
+    REM Associazioni files    
+    dism /online /Import-DefaultAppAssociations:"C:\config\AppAssociations.xml"
 )
 
 REM Apro WPD e Dism per configurazioni aggiuntive

@@ -120,7 +120,7 @@ REM net user Administrator admin /active:yes
 
 REM Importo l'associazione files per tutti gli utenti
 if EXIST %BASEPATH%\AppAssociations.xml (
-dism /online /Import-DefaultAppAssociations:"%BASEPATH%\AppAssociations\AppAssociations.xml"
+dism /online /Import-DefaultAppAssociations:"C:\config\AppAssociations.xml"
 )
 
 REM Disabilito Consumer Experience
