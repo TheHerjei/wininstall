@@ -193,7 +193,7 @@ if %AUTOBKP% EQU 1 (
     notepad C:\scripts\resticBkp.bat
 )
 
-if %TERMSRV%=1 (
+if %TERMSRV% EQU 1 (
     REM Abilito le connessioni desktop remoto multiple
     powershell Set-ExecutionPolicy Bypass -Scope Process -Force; %BASEPATH%\scripts\multiplerdp.ps1
 
@@ -254,7 +254,7 @@ if %INST% EQU "home" (
     winget install -e -h ONLYOFFICE.DesktopEditors
     winget install -e -h WhatsApp.WhatsApp
     winget install -e -h Telegram.TelegramDesktop
-    winget install -e -h Dropbox.Dropbox
+    REM winget install -e -h Dropbox.Dropbox
 
     REM Assistenza rapida
     winget install -e -h 9P7BP5VNWKX5 --source msstore --accept-source-agreements --accept-package-agreements
@@ -271,7 +271,7 @@ if %INST% EQU "home" (
     gpupdate /force
 
     REM Installo ZOOM
-    %BASEPATH%\apps\zoom.exe
+    %BASEPATH%\apps\ZoomInstallerFull.exe
 	
 	REM Importo Start Layout
 	powershell Set-ExecutionPolicy Bypass -Scope Process -Force; %BASEPATH%\scripts\StartLayout.ps1
