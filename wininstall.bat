@@ -198,7 +198,7 @@ if %TERMSRV% EQU 1 (
     powershell Set-ExecutionPolicy Bypass -Scope Process -Force; %BASEPATH%\scripts\multiplerdp.ps1
 
     REM Abilito RDPApps
-
+    REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "AllowUnlistedRemotePrograms" /t REG_DWORD /d 1 /f
 )
 
 REM Modifiche al registro (sicure)
