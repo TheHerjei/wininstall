@@ -258,11 +258,9 @@ if %INST% EQU "home" (
 
     REM Assistenza rapida
     winget install -e -h 9P7BP5VNWKX5 --source msstore --accept-source-agreements --accept-package-agreements
+    
     REM JWLibrary
-    winget install -e -h 9WZDNCRFJ3B4 --source msstore
-
-    REM Link di Aiuto sul desktop
-    mklink %PUBLIC%\Desktop\AIUTO "C:\script\quickassist.bat"
+    winget install -e -h 9WZDNCRFJ3B4 --source msstore --accept-package-agreements
 
     SCHTASKS /DELETE /TN "Adobe Acrobat Update Task" /F
 
