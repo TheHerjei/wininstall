@@ -87,8 +87,7 @@ mkdir %HOMEDRIVE%\scripts
 robocopy /mt:128 /S /E /R:0 /W:0 %BASEPATH%\scripts %HOMEDRIVE%\scripts
 
 REM Imposto C:\bin sulla variabile PATH...
-setx /M PATH "%PATH%;C:\bin"
-setx /M PATH "%PATH%;C:\scripts"
+setx /M PATH "%PATH%;C:\bin;C:\scripts"
 
 REM Opzioni di risparmio energia
 if %LAPTOPMODE% EQU 1 (
@@ -166,6 +165,25 @@ REM Disinstallo applicazioni inutili (sicuro)
 winget uninstall -h Microsoft.OneDrive
 winget uninstall -h Microsoft.Teams
 winget uninstall -h Microsoft.TeamsMachineWideInstaller
+winget uninstall Disney+
+winget uninstall Cortana
+winget uninstall "MSN Meteo"
+winget uninstall Office
+winget uninstall "Portale realta mista"
+winget uninstall "Microsoft People"
+winget uninstall "Microsoft Pay"
+winget uninstall "Hub di Feedback"
+winget uninstall "Mappe Windows"
+winget uninstall Xbox
+winget uninstall "Xbox TCUI"
+winget uninstall "Xbox Game Bar Plugin"
+winget uninstall "Xbox Game Bar"
+winget uninstall "Xbox Identity Provider"
+winget uninstall "Xbox Game Speech Window"
+winget uninstall "Collegamento al telefono"
+winget uninstall "Groove Musica"
+winget uninstall "Film e TV"
+winget uninstall "Spotify Music"
 
 REM Disattivo servizi (sicuro)
 sc config "XblAuthManager" start= disabled
@@ -384,11 +402,6 @@ if %INST% EQU "extreme" (
 	REG ADD "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" /v EnabledV9 /t REG_DWORD /d 0 /f
 	REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
 	REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
-	REG ADD "" /v  /t REG_DWORD /d 0 /f
-	REG ADD "" /v  /t REG_DWORD /d 0 /f
-	REG ADD "" /v  /t REG_DWORD /d 0 /f
-	REG ADD "" /v  /t REG_DWORD /d 0 /f
-	REG ADD "" /v  /t REG_DWORD /d 0 /f
 
     REM Rimuovo AppXProvisionedPackage per tutti gli utenti
     powershell Set-ExecutionPolicy Bypass -Scope Process -Force; %BASEPATH%\appxRemove.ps1
